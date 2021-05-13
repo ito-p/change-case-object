@@ -26,6 +26,19 @@ describe('change-case-object', function () {
     expect(changeCaseObject.camelCase(initialObj)).to.deep.equal(fixtureObj);
   });
 
+  it('camelCase (Date object)', function () {
+    var now = new Date();
+
+    var initialObj = {
+      'hello_world': now,
+    };
+
+    var fixtureObj = {
+      'helloWorld': now,
+    };
+    expect(changeCaseObject.camelCase(initialObj)).to.deep.equal(fixtureObj);
+  });
+
   it('camelCase (Array of Object)', function () {
     var initialArrObj = [
       { 'hello_world': 'test' },
@@ -42,10 +55,12 @@ describe('change-case-object', function () {
     expect(changeCaseObject.camelCase(initialArrObj)).to.deep.equal(fixtureArrObj);
   });
 
-  it('camelCase (Array of string)', function () {
-    var initialArrStr = ['is_active', 'is_blocked'];
+  it('camelCase (Array of string or Date)', function () {
+    var now = new Date();
 
-    var fixtureArrStr = ['is_active', 'is_blocked'];
+    var initialArrStr = ['is_active', 'is_blocked', now];
+
+    var fixtureArrStr = ['is_active', 'is_blocked', now];
 
     expect(changeCaseObject.camelCase(initialArrStr)).to.deep.equal(fixtureArrStr);
   });
@@ -74,11 +89,24 @@ describe('change-case-object', function () {
     expect(changeCaseObject.camelCase(initialPrimitive)).to.deep.equal(fixturePrimitive);
   });
 
+  it('camelCase (Primitive - Date)', function () {
+    var now = new Date();
+
+    var initialPrimitive = now;
+
+    var fixturePrimitive = now;
+
+    expect(changeCaseObject.camelCase(initialPrimitive)).to.deep.equal(fixturePrimitive);
+  });
+
   it('camelCase (deep)', function () {
+    var now = new Date();
+
     var initialObj = {
       'hello_world': {
         'hello_there': 'name',
         'my_name': 'someone',
+        'created_at': now,
       },
     };
 
@@ -86,6 +114,7 @@ describe('change-case-object', function () {
       'helloWorld': {
         'helloThere': 'name',
         'myName': 'someone',
+        'createdAt': now,
       },
     };
 
@@ -123,6 +152,19 @@ describe('change-case-object', function () {
     expect(changeCaseObject.paramCase(initialObj)).to.deep.equal(fixtureObj);
   });
 
+  it('paramCase (Date object)', function () {
+    var now = new Date();
+
+    var initialObj = {
+      'helloWorld': now,
+    };
+
+    var fixtureObj = {
+      'hello-world': now,
+    };
+    expect(changeCaseObject.paramCase(initialObj)).to.deep.equal(fixtureObj);
+  });
+
   it('paramCase (Array of Object)', function () {
     var initialArrObj = [
       { 'hello_world': 'test' },
@@ -139,10 +181,12 @@ describe('change-case-object', function () {
     expect(changeCaseObject.paramCase(initialArrObj)).to.deep.equal(fixtureArrObj);
   });
 
-  it('paramCase (Array of string)', function () {
-    var initialArrStr = ['is_active', 'is_blocked'];
+  it('paramCase (Array of string or Date)', function () {
+    var now = new Date();
 
-    var fixtureArrStr = ['is_active', 'is_blocked'];
+    var initialArrStr = ['is_active', 'is_blocked', now];
+
+    var fixtureArrStr = ['is_active', 'is_blocked', now];
 
     expect(changeCaseObject.paramCase(initialArrStr)).to.deep.equal(fixtureArrStr);
   });
@@ -171,11 +215,24 @@ describe('change-case-object', function () {
     expect(changeCaseObject.paramCase(initialPrimitive)).to.deep.equal(fixturePrimitive);
   });
 
+  it('paramCase (Primitive - Date)', function () {
+    var now = new Date();
+
+    var initialPrimitive = now;
+
+    var fixturePrimitive = now;
+
+    expect(changeCaseObject.paramCase(initialPrimitive)).to.deep.equal(fixturePrimitive);
+  });
+
   it('paramCase (deep)', function () {
+    var now = new Date();
+
     var initialObj = {
       'helloWorld': {
         'helloThere': 'name',
         'myName': 'someone',
+        'createdAt': now,
       },
     };
 
@@ -183,6 +240,7 @@ describe('change-case-object', function () {
       'hello-world': {
         'hello-there': 'name',
         'my-name': 'someone',
+        'created-at': now,
       },
     };
 
@@ -220,6 +278,19 @@ describe('change-case-object', function () {
     expect(changeCaseObject.snakeCase(initialObj)).to.deep.equal(fixtureObj);
   });
 
+  it('snakeCase (Date object)', function () {
+    var now = new Date();
+
+    var initialObj = {
+      'helloWorld': now,
+    };
+
+    var fixtureObj = {
+      'hello_world': now,
+    };
+    expect(changeCaseObject.snakeCase(initialObj)).to.deep.equal(fixtureObj);
+  });
+
   it('snakeCase (Array of Object)', function () {
     var initialArrObj = [
       { 'helloWorld': 'test' },
@@ -236,10 +307,12 @@ describe('change-case-object', function () {
     expect(changeCaseObject.snakeCase(initialArrObj)).to.deep.equal(fixtureArrObj);
   });
 
-  it('snakeCase (Array of string)', function () {
-    var initialArrStr = ['isActive', 'isBlocked'];
+  it('snakeCase (Array of string or Date)', function () {
+    var now = new Date();
 
-    var fixtureArrStr = ['isActive', 'isBlocked'];
+    var initialArrStr = ['isActive', 'isBlocked', now];
+
+    var fixtureArrStr = ['isActive', 'isBlocked', now];
 
     expect(changeCaseObject.snakeCase(initialArrStr)).to.deep.equal(fixtureArrStr);
   });
@@ -268,11 +341,24 @@ describe('change-case-object', function () {
     expect(changeCaseObject.snakeCase(initialPrimitive)).to.deep.equal(fixturePrimitive);
   });
 
+  it('snakeCase (Primitive - Date)', function () {
+    var now = new Date();
+
+    var initialPrimitive = now;
+
+    var fixturePrimitive = now;
+
+    expect(changeCaseObject.snakeCase(initialPrimitive)).to.deep.equal(fixturePrimitive);
+  });
+
   it('snakeCase (deep)', function () {
+    var now = new Date();
+
     var initialObj = {
       'helloWorld': {
         'helloThere': 'name',
         'myName': 'someone',
+        'createdAt': now,
       },
     };
 
@@ -280,6 +366,7 @@ describe('change-case-object', function () {
       'hello_world': {
         'hello_there': 'name',
         'my_name': 'someone',
+        'created_at': now,
       },
     };
 

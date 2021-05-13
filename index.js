@@ -5,7 +5,9 @@ var paramCase = require('param-case');
 var changeKeys = function changeKeys(transformer, obj) {
   var objectKeys;
 
-  if (Array.isArray(obj)) {
+  if (obj instanceof Date) {
+    return obj;
+  } else if (Array.isArray(obj)) {
     return obj.map(function keysMap(key) {
       if (typeof key === 'string') {
         return key;
